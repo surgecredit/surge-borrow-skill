@@ -41,7 +41,7 @@ Seed the test matrix from this list and add every case you discover. Where a row
 - D4 Under $5 → `AMOUNT_BELOW_MINIMUM` before any prompt; malformed amounts → `INVALID_PARAMS`.
 - D5 † Restart while a deposit is pending → `getActiveDeposit` → same address, watcher resumed; `createDeposit` again returns `resumed: true`.
 - D6 † Second deposit while one is pending → `DEPOSIT_ALREADY_ACTIVE` → resume path.
-- D7 Pair already has a line → `LOAN_ALREADY_ACTIVE` → routed to the position; after a sweep, the §4.7 explanation and the new-pair path.
+- D7 Pair already has a line → `LOAN_ALREADY_ACTIVE` → routed to the position; after a sweep, the position's empty-but-live state with Add collateral as the way to borrow again (§4.7).
 - D8 Deposit expired or failed → old address hidden; `failure_reason` shown; fresh deposit offered.
 - D9 Underfunded deposit → `failed` with the shortfall reason, represented in the UI.
 - D10 Fresh deposit on a vault already holding coins → mints without a new send, surplus credited; the Open screen quoted the net amount.
@@ -115,7 +115,7 @@ Seed the test matrix from this list and add every case you discover. Where a row
 
 **K. Renew**
 
-- K1 Proactive renewal: three signatures disclosed with the fee; `watchExtension` to `finalized`; `exitBlock` = tip + 52,416 (§4.42).
+- K1 Proactive renewal: 2 + N signatures disclosed with the fee (N vault inputs); `watchExtension` to `finalized`; `exitBlock` = tip + 52,416 (§4.42).
 - K2 Reactive: expired with collateral → only Renew offered; after renewal, Draw returns (parked position, ~38 days).
 - K3 `EXTENSION_ALREADY_PENDING` → existing one watched, no second request.
 - K4 Reject the Bitcoin signature after the EVM request → `pending`, `btcTxHash: null` → Finish renewal → `finalized`; gate open at zero debt.
@@ -125,7 +125,7 @@ Seed the test matrix from this list and add every case you discover. Where a row
 
 **L. End states**
 
-- L1 Empty but bound after a sweep: explanation and the new-pair path.
+- L1 Empty but live after a sweep: a new deposit is refused; Add collateral and `borrowMoreSync` re-open borrowing on the same line (verify live); a fresh pair only for a separate line.
 - L2 `inLiquidation` → every action disabled with the auction state.
 - L3 `liquidated` with type, time, seized collateral and settled debt.
 - L4 Deadline countdown and overdue warning.
