@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: withdraw-prompt-count
+expected_outcome: |
+  docs/prompt-plan.md states that a withdrawal is three signatures in order (EIP-712 WithdrawCollateral, a Schnorr signature over every vault input in one PSBT call, then an EIP-191 envelope), that a renewal is three (EIP-712 RequestCreditLineExtension, a Schnorr vault self-spend that pays a miner fee, then an EIP-191 envelope), that resuming either is two (Schnorr then EIP-191), and that the README's At-a-glance table under-counts them.

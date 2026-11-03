@@ -1,0 +1,22 @@
+{
+  "name": "surge-borrow-skill",
+  "owner": {
+    "name": "borglin",
+    "email": "borglin.me@gmail.com"
+  },
+  "description": "Marketplace for the surge-borrow plugin: Surge.Credit Bitcoin-backed USDC borrowing, from integration brief to funded signet E2E.",
+  "plugins": [
+    {
+      "name": "surge-borrow",
+      "source": "./",
+      "description": "Skill, start command and secret-guard hooks for integrating Surge.Credit borrowing.",
+      "category": "development",
+      "tags": [
+        "bitcoin",
+        "surge",
+        "usdc",
+        "wallet"
+      ]
+    }
+  ]
+}
