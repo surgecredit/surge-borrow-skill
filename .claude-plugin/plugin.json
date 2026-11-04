@@ -1,6 +1,6 @@
 {
   "name": "surge-borrow",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Integrate Bitcoin-backed USDC borrowing on Surge.Credit into a wallet or build it standalone, with the verified SDK facts, the use-case inventory and a funded signet test harness.",
   "author": {
     "name": "borglin",

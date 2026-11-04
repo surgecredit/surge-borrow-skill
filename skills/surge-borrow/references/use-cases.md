@@ -38,7 +38,7 @@ Seed the test matrix from this list and add every case you discover. Where a row
 - D1 Vault address derived locally equals `deriveVaultAddress` and the relayer's `vaultAddress`; a mismatch blocks funding.
 - D2 Happy path, variable market, minimum borrow: `createDeposit` → address and QR → fund → `watchDeposit` through pending and confirming → `nft_id` → position readable → USDC balance up by the borrow.
 - D3 Same on the fixed market.
-- D4 Under $5 → `AMOUNT_BELOW_MINIMUM` before any prompt; malformed amounts → `INVALID_PARAMS`.
+- D4 Under $5 → `AMOUNT_BELOW_MINIMUM` before any prompt; malformed amounts → `INVALID_PARAMS` when they coerce to $5 or more, otherwise `AMOUNT_BELOW_MINIMUM` in `createDeposit` (its $5 check runs on `Number(amount)` before the parser; `borrowMore` and `borrowMoreSync` parse first).
 - D5 † Restart while a deposit is pending → `getActiveDeposit` → same address, watcher resumed; `createDeposit` again returns `resumed: true`.
 - D6 † Second deposit while one is pending → `DEPOSIT_ALREADY_ACTIVE` → resume path.
 - D7 Pair already has a line → `LOAN_ALREADY_ACTIVE` → routed to the position; after a sweep, the position's empty-but-live state with Add collateral as the way to borrow again (§4.7).
