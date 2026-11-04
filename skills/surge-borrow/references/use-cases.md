@@ -74,7 +74,7 @@ Seed the test matrix from this list and add every case you discover. Where a row
 **G. Borrow more**
 
 - G1 Within `maxBorrowUsd` → `borrowMore` → USDC increases (after a top-up sized for ≥ $5 of headroom, §4.28).
-- G2 Above it → `LTV_EXCEEDED` before any prompt → `borrowMoreSync` with the exact top-up from `getRequiredCollateral({ positionId })`; terminal on `submitted` / `confirmed`.
+- G2 Above it → `LTV_EXCEEDED` before any prompt → `borrowMoreSync` with the exact top-up from `getRequiredCollateral({ positionId })`; terminal on `submitted` / `confirmed`, or the record vanishes once the draw and the sync are done (facts §4.53: treat as finished).
 - G3 Above `availableLiquidityUsd` → `INSUFFICIENT_MARKET_LIQUIDITY`.
 - G4 Amount validation: more than 6 decimals rejected; boundary comparison as scaled integers.
 - G5 Blocked states hide the button: `EXTENSION_ALREADY_PENDING`, `WITHDRAWAL_ALREADY_PENDING`, expired, liquidating; the throw is still handled if it fires.
