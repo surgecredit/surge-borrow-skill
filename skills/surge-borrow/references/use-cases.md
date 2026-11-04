@@ -115,7 +115,7 @@ Seed the test matrix from this list and add every case you discover. Where a row
 
 **K. Renew**
 
-- K1 Proactive renewal: 2 + N signatures disclosed with the fee (N vault inputs); `watchExtension` to `finalized`; `exitBlock` = tip + 52,416 (§4.42).
+- K1 Proactive renewal: 2 + N signatures disclosed with the fee (N vault inputs); watched to `finalized`, not `confirmed`, where the SDK's watcher stops (§4.58); `exitBlock` = tip + 52,416 (§4.42), proven by the moved exit block.
 - K2 Reactive: expired with collateral → only Renew offered; after renewal, Draw returns (parked position, ~38 days).
 - K3 `EXTENSION_ALREADY_PENDING` → existing one watched, no second request.
 - K4 Reject the Bitcoin signature after the EVM request → `pending`, `btcTxHash: null` → Finish renewal → `finalized`; gate open at zero debt.
