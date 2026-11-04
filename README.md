@@ -1,6 +1,10 @@
 # surge-borrow-skill
 
-A Claude Code skill, packaged as a plugin, for integrating Bitcoin-backed USDC borrowing on [Surge.Credit](https://surge.credit) into a wallet or building it as a standalone app, and testing it on Surge's private signet with real coins through to mainnet behind a flag.
+A Claude Code skill, packaged as a plugin, for integrating Bitcoin-backed USDC borrowing on [Surge.Credit](https://surge.credit) into a wallet or building it as a standalone app, and testing it on Surge's private signet with real coins.
+
+Repository: [github.com/surgecredit/surge-borrow-skill](https://github.com/surgecredit/surge-borrow-skill)
+
+> **Status: experimental.** This skill is for prototyping integrations. It is not mainnet ready yet. Its facts were verified against `@surgecredit/borrow-sdk@0.1.13`, and its harness has only ever spent coins on Surge's signet; on mainnet it has done reads and nothing more. Keep mainnet behind a flag, off by default, as the skill itself requires.
 
 It was distilled from a complete first integration against `@surgecredit/borrow-sdk@0.1.13` (October and November 2026): a working app, 182 offline tests, three live signet lifecycles, 49 findings and 13 defects reported to Surge. The skill carries what that run learned so the next team does not learn it again.
 
@@ -26,11 +30,13 @@ hooks/                          refuses tool calls that would print the harness 
 From a terminal with Claude Code:
 
 ```bash
-claude plugin marketplace add <this repository's URL or local path>
+claude plugin marketplace add https://github.com/surgecredit/surge-borrow-skill
 claude plugin install surge-borrow@surge-borrow-skill
 ```
 
-Or, to use only the skill without the command and hooks, copy `skills/surge-borrow/` into your project's `.claude/skills/`.
+The GitHub shorthand `surgecredit/surge-borrow-skill` or a local path to a clone works in place of the URL.
+
+Or, to use only the skill without the command and hooks, copy `skills/surge-borrow/` into your project's `.claude/skills/`, or into `~/.claude/skills/` for every project.
 
 ## Use
 
