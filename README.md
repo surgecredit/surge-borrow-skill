@@ -13,7 +13,7 @@ skills/surge-borrow/
   references/what-to-build.md   architecture requirements, screens, display rules, safety rails, stuck states
   references/use-cases.md       the A–N use-case inventory a complete integration tests
   references/harness.md         test network, coins, identities, funding protocol, timings, test levels, drive mode
-  assets/brief-template.md      the one-page per-project brief (/surge-borrow:start writes it)
+  assets/brief-template.md      the per-project brief (v4 of the executed brief; /surge-borrow:start writes it)
   scripts/                      wallet generator and signer, esplora client, funding helper, signer bridge,
                                 drive and pay commands, secret scanner (copied into the project)
   evals/                        test cases for `claude plugin eval`
