@@ -1,4 +1,4 @@
 schema_version: "1.1"
 name: swept-wallet-loan-already-active
 expected_outcome: |
-  docs/second-line.md explains that a credit line is bound to its (BTC key, EVM address) pair for life, that sweeping does not close it and no user action can, that retrying createDeposit is wrong, and that the way to borrow again is to re-fund the same line (send BTC to the same vault and addCollateral, or borrowMoreSync to add and draw) once the sweep has finalized, with a fresh key pair needed only for a second, separate line and the end state derived from inLiquidation, getLiquidation, collateral and debt rather than isActive.
+  docs/second-line.md explains that a credit line is bound to its (BTC key, EVM address) pair for life, that sweeping does not close it and no user action can, that retrying createDeposit is wrong and the app should gate on getPositionId() before any signature, that the way to borrow again is to re-fund the same line (addCollateral or borrowMoreSync) once the sweep has finalized, that a fresh key pair is needed only for a second, separate line, and that the end state is derived from inLiquidation, getLiquidation, collateral and debt rather than isActive.

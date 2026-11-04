@@ -1,4 +1,4 @@
 schema_version: "1.1"
 name: withdraw-prompt-count
 expected_outcome: |
-  docs/prompt-plan.md states that a withdrawal is one EIP-712 WithdrawCollateral, one Schnorr PSBT signature over every vault input in a single call, one EIP-191 envelope per vault input and one final EIP-191 envelope that hands the txid to Surge (3 + N for N inputs); that a renewal is one EIP-712 RequestCreditLineExtension, one Schnorr vault self-spend that pays a miner fee and one EIP-191 envelope per input (2 + N); that the resume flows repeat the Bitcoin and envelope legs without a new EIP-712; that relayer retries re-sign envelopes so the counts are a floor; and that the README under-counts.
+  docs/prompt-plan.md states the per-input signature sequence for withdrawals (3 + N) and renewals (2 + N), what each signature is over, that the resume flows repeat the Bitcoin and envelope legs without a new EIP-712, the rejection semantics including the post-broadcast envelope and reconcileWithdrawal, that retries re-sign envelopes, that N comes from confirmed UTXOs, that some refusals surface after the first signature, and marks anything the SDK does not define as unknown.
